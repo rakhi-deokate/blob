@@ -1,0 +1,35 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="table table-sm table-bordered table-hover table-responsive pretty">
+	<thead class="thead-default">
+		<tr>
+			<th>#</th>
+			<th><%= sortable "uid", "Uid" %></th>
+			<th><%= sortable "name", "Name" %></th>
+			<th><%= sortable "price", "Price" %></th>
+			<th><%= sortable "quantity", "Quantity" %></th>
+			<th><%= sortable "comments", "Image" %></th>
+			<th><%= sortable "released_at", "Released" %></th>
+		</tr>
+	</thead>
+	<% index = 0 %>
+	<% @products.each do |product| %>
+	<% index += 1 %>
+	<tbody>
+		<tr>
+			<th scope="row"><%= index %></th>
+			<td class="text-primary"><%= product.uid %></td>
+			<td class="text-primary"><%= product.name %></td>
+			<td class="text-primary price"><%= number_to_currency(product.price) %></td>
+			<td class="text-primary"><%= product.quantity %></td>
+			<td class="text-muted">
+				<%= image_tag product.comments %>
+			</td>
+			<td class="text-muted"><%= product.released_at.strftime("%B %e, %Y") %></td>
+		</tr>
+	</tbody>
+	<% end %>
+</div>
+
+<%= will_paginate @products %>

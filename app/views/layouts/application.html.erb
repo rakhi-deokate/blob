@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= yield(:title) || "Untitled" %></title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= yield(:head) %>
+  </head>
+
+  <body>
+    <div id="container">
+      <% flash.each do |name, msg| %>
+          <%#= debug name.inspect %>
+          <% name = "info" if name == "notice" %>
+          <%= content_tag :div, msg, class: "alert alert-#{name}" %>
+      <% end %>
+      <%= content_tag :h1, yield(:title) %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

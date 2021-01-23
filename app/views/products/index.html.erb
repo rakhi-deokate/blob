@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="col-sm-12 col-md-8">
+    <div class="product-import">
+      <h3>Upload and Import CSV Data</h3>
+      <%= form_tag import_products_path, multipart: true do %>
+          <%= file_field_tag :file, id: "choose-file", class: "btn btn-secondary btn-file" %>
+          <%= submit_tag "Import CSV", id: "import-submit", class: "btn btn-success" %>
+      <% end %>
+    </div>
+  </div>
+  <div class="col-sm-12 col-md-4">
+    <div class="product-search">
+      <%# content_for :title, "Products" %>
+      <h3>Search</h3>
+      <%= form_tag products_path, method: 'get', id: "products_search", class: "form-inline pull-xs-right" do %>
+        <p>
+          <%= text_field_tag :search, params[:search], placeholder: "", id: "search-input", class: "form-control" %>
+          <%= submit_tag "Search", name: nil, id: "search-submit", class: "btn btn-success" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <div class="product-list">
+      <h3>Sort and Paginate</h3>
+      <div id="products"><%= render 'products' %></div>
+    </div>
+  </div>
+</div>

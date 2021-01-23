@@ -1,0 +1,37 @@
+{
+  "rows": 200,
+  "fields": [
+    {
+      "name": "uid",
+      "type": "rand:char",
+      "length": 5
+    },
+    {
+      "name": "name",
+      "type": "faker:name:last_name",
+      "inject": ["Schoen"]
+    },
+    {
+      "name": "quantity",
+      "type": "rand:int",
+      "range": [10, 80]
+    },
+    {
+      "name": "price",
+      "type": "rand:float",
+      "range": [150, 190],
+      "inject": [200, 210],
+      "rotate": 12,
+      "precision": 2
+    },
+    {
+      "name": "comments",
+      "type": "fixed",
+      "values": ["http://lorempixel.com/100/100/"]
+    },
+    {
+      "name": "released_at",
+      "type": "faker:date:forward"
+    }
+  ]
+}
